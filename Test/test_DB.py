@@ -10,4 +10,4 @@ def test_storage_vector():
         n_results=5,
     )
     assert data != None
-    print(data)
+    
