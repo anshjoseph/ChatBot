@@ -32,13 +32,15 @@ class ChatBotInterface():
         assert _data != None
         assert len(self.__messages) <= self.__limit
         _data = "".join(_data.get("documents")[0])
-        self.__messages.append({"role": "user", "content": f"{_data} \n[message] answer my question from above data"})
+        self.__messages.append({"role": "user", "content": f"{_data} \n[message] answer my question from above data and make it crisp and make it short and classiy"})
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
             messages=self.__messages
         )
-        print(message)
-        print(response['choices'][0]['message']['content'])
+        # DEBUG
+        if config_API.get('debug'):
+            print(message)
+            print(response['choices'][0]['message']['content'])
         return {'response':response['choices'][0]['message']['content'],'limit':self.__limit,'used':len(self.__messages)}
 
 chatbot = ChatBotInterface()
