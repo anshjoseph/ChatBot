@@ -1,0 +1,45 @@
+personalized meal plan for a female with a height of 160 cm, weight of 60 kg, and age of 30 years aiming for a 1,500-calorie diet to support weight loss.
+
+    Calculate TDEE:
+    Female: Calories per day = 10x(weight in kg) + 6.25x(height in cm) – 5x(age) – 161
+    TDEE = 10(60) + 6.25(160) - 5(30) - 161
+    TDEE = 600 + 1000 - 150 - 161
+    TDEE = 1289 calories per day
+
+    Create a Calorie Deficit:
+    To lose weight, we'll aim for a daily intake of 1,500 calories, creating a deficit of 211 calories per day.
+
+    Sample Meal Plan:
+    Here's a one-day sample meal plan based on the calculated calorie intake:
+
+        Breakfast:
+            Scrambled eggs (2 eggs): 140 calories
+            Whole wheat toast (1 slice): 70 calories
+            Spinach (1/2 cup cooked): 21 calories
+            Total: 231 calories
+
+        Lunch:
+            Grilled chicken breast (4 ounces): 165 calories
+            Mixed greens salad (1 cup): 10 calories
+            Cherry tomatoes (5 pieces): 20 calories
+            Balsamic vinaigrette (1 tablespoon): 43 calories
+            Total: 238 calories
+
+        Dinner:
+            Baked cod (4 ounces): 120 calories
+            Quinoa (1/2 cup cooked): 111 calories
+            Steamed broccoli (1 cup): 55 calories
+            Total: 286 calories
+
+        Snacks (spread throughout the day):
+            Greek yogurt (non-fat, plain, 1/2 cup): 65 calories
+            Apple: 95 calories
+            Carrot sticks (1/2 cup): 26 calories
+            Total: 186 calories
+
+        Total Daily Calories: 231 (breakfast) + 238 (lunch) + 286 (dinner) + 186 (snacks) = 941 calories
+
+    Adjustments:
+    Adjust portion sizes or add additional snacks to reach the target of 1,500 calories per day while maintaining a balanced diet.
+
+This sample meal plan provides a variety of nutrients while staying within the calorie goal for weight loss. Adjustments can be made based on individual preferences and dietary needs.
