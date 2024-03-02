@@ -47,6 +47,6 @@ chatbot = ChatBotInterface()
 app.include_router(chatbot.router)
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", host=config_API.get('host'), reload=True, port=config_API.get('port'))
+    uvicorn.run("main:app", host=config_API.get('host'), reload=config_API.get('reload'), port=config_API.get('port'))
 
 

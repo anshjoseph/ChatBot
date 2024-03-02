@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💪 BOt</title>
+
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+
+    <script type="module" src="https://md-block.verou.me/md-block.js"></script>
+
+
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="w-full h-screen bg-gray-100">
+
+
+
+        <div class="chat-area flex-1 flex flex-col mr-10 ml-10" style="height: 100vh;">
+            <div class="flex-3">
+                <h2 class="text-xl py-1 mb-8 border-b-2 border-gray-200">Chatting with <b>Strong Bot</b></h2>
+            </div>
+
+
+
+            <div class="messages flex-1 overflow-auto" style="height: 80vh;" id="message_area">
+            </div>
+
+
+
+
+
+            <div class="flex-2 pt-4 pb-10 bg-gray-100">
+                <div class="write bg-white shadow flex rounded-lg shadow-inner shadow-slate-950">
+                    <div class="flex-3 flex content-center items-center text-center p-4 pr-0">
+                        <span class="block text-center text-gray-400 hover:text-gray-800">
+                            <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                stroke="currentColor" viewBox="0 0 24 24" class="h-6 w-6">
+                                <path
+                                    d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                                </path>
+                            </svg>
+                        </span>
+                    </div>
+
+                    <div class="flex-1">
+                        <textarea name="message" class="w-full block outline-none py-4 px-4 bg-transparent" rows="1"
+                            placeholder="Type a message..." autofocus id="text_box"></textarea>
+                    </div>
+
+                    <div class="flex-2 w-32 p-2 flex content-center items-center">
+
+                        <div class="flex-1" id="send_btn">
+                            <button class="bg-blue-400 w-10 h-10 rounded-full inline-block">
+                                <span class="inline-block align-text-bottom">
+                                    <svg fill="none" stroke="currentColor" stroke-linecap="round"
+                                        stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
+                                        class="w-4 h-4 text-white">
+                                        <path d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+
+<script>
+    var processing_state = true
+    function makeReq(message) {
+        let message_area = $("#message_area")
+        // message = encodeURIComponent(message)
+        let jqxhr = $.post(`/api/?message=${message}`, function (res) {
+            console.log(res)
+            message_area.append(revc_message_ui(res['response']))
+            let text_box = $("#text_box")
+            let data = text_box.val("")
+
+        }).fail(function () {
+            alert("some thing went wrong");
+        }).always(() => {
+            processing_state = true
+        })
+
+    }
+    function revc_message_ui(text) {
+        html = `<div class="message mb-4 flex">
+                    <div class="flex-1 px-2">
+                        <div class="inline-block bg-gray-300 rounded-full p-2 px-6 text-gray-700 w-50">
+                            <md-block>${text}</md-block>
+                        </div>
+                    </div>
+                </div>`
+
+        return html
+    }
+    function send_message_ui(text) {
+        html = `<div class="message me mb-4 flex text-right">
+                    <div class="flex-1 px-2">
+                        <div class="inline-block bg-blue-600 rounded-full p-2 px-6 text-white w-50">
+                            <md-block>${text}</md-block>
+                        </div>
+                    </div>
+                </div>`
+        return html
+    }
+
+    function send_btn_click_evt() {
+        if (processing_state) {
+            processing_state = false
+            let message_area = $("#message_area")
+            let text_box = $("#text_box")
+            let data = text_box.val()
+            message_area.append(send_message_ui(data))
+            makeReq(data)
+        }else{
+            alert("processing ...")
+        }
+
+    }
+
+
+    $(document).ready(() => {
+        let message_area = $("#message_area")
+        let send_btn = $("#send_btn")
+        send_btn.on('click', send_btn_click_evt)
+    })
+
+</script>
+
+</html>
