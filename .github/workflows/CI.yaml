@@ -17,6 +17,7 @@ jobs:
             - name: Genrate ENV
               run: |
                 echo "OPENAI_KEY=${env.OPENAI_KEY}" >> .env
+                ls -la
             - name: Install dependency
               run: |
                 python -m pip install --upgrade pip
