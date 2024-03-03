@@ -16,7 +16,7 @@ jobs:
                 python-version: '3.x'
             - name: Genrate ENV
               run: |
-                echo OPENAI_KEY=${env.OPENAI_KEY} >> .env
+                echo "OPENAI_KEY=${{secrets.OPENAI_KEY}}" >> .env
                 ls -la
             - name: Install dependency
               run: |
