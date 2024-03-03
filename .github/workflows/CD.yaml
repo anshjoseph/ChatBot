@@ -1,0 +1,11 @@
+name: push to server
+on:
+    release
+jobs:
+    deploy:
+        runs-on:
+            - linux
+        steps:
+            - name: test
+              run: |
+                ls  -la
