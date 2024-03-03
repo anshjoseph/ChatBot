@@ -17,16 +17,12 @@ jobs:
             - name: Genrate ENV
               run: |
                 echo "OPENAI_KEY=${{secrets.OPENAI_KEY}}" >> .env
-                cat .env
             - name: Install dependency
               run: |
                 python -m pip install --upgrade pip
                 pip install -r reqs.txt
-            - name: run test
-              run: |
-                pytest
-            - name: start API and UI
+            - name: start API and UI and test
               run: |
                 chmod +x run.sh
-                ./run.sh & sleep 10 & exit
+                ./run.sh & sleep 10 & pytest & exit
             
