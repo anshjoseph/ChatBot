@@ -17,12 +17,10 @@ jobs:
               run: |
                 python -m pip install --upgrade pip
                 pip install -r reqs.txt
-            - name: start API
-              run: |
-                python API/main.py
-            - name: start UI
-              run: |
-                python UI/main.py
             - name: run test
               run: |
                 pytest
+            - name: start API and UI
+              run: |
+                run.sh & sleep 10 & exit
+            

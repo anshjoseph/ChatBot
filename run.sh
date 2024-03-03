@@ -1,0 +1,1 @@
+python3 API/main.py & python3 UI/main.py
